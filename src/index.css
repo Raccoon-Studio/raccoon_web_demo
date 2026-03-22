@@ -1,0 +1,107 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "DM Sans", "Inter", "Geist", system-ui, sans-serif;
+  --font-display: "Syne", "Satoshi", "Cal Sans", "Inter", sans-serif;
+  --font-grotesk: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --color-bg: var(--color-bg);
+  --color-bg-secondary: var(--color-bg-secondary);
+  --color-bg-elevated: var(--color-bg-elevated);
+  --color-bg-card: var(--color-bg-card);
+  --color-bg-hover: var(--color-bg-hover);
+
+  --color-dark: var(--color-dark);
+  --color-dark-surface: var(--color-dark-surface);
+  --color-dark-elevated: var(--color-dark-elevated);
+  --color-dark-card: var(--color-dark-card);
+
+  --color-text-100: var(--color-text-100);
+  --color-text-200: var(--color-text-200);
+  --color-text-300: var(--color-text-300);
+  --color-text-400: var(--color-text-400);
+  --color-text-primary: var(--color-text-primary);
+  --color-text-secondary: var(--color-text-secondary);
+  --color-text-muted: var(--color-text-muted);
+  --color-text-dim: var(--color-text-dim);
+
+  --color-border: var(--color-border);
+  --color-border-light: var(--color-border-light);
+  --color-border-hover: var(--color-border-hover);
+  --color-dark-border: var(--color-dark-border);
+  --color-dark-border-light: var(--color-dark-border-light);
+
+  --color-accent: var(--color-accent);
+  --color-accent-light: var(--color-accent-light);
+  --color-cyan: var(--color-cyan);
+  --color-emerald: var(--color-emerald);
+
+  /* === BREAKPOINTS === */
+  --breakpoint-xs: 360px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+  --breakpoint-3xl: 1920px;
+}
+
+@layer base {
+  :root {
+    --color-bg: #050505;
+    --color-bg-secondary: #0a0a0a;
+    --color-bg-elevated: #111111;
+    --color-bg-card: #111111;
+    --color-bg-hover: #1a1a1a;
+
+    --color-dark: #050505;
+    --color-dark-surface: #0a0a0a;
+    --color-dark-elevated: #111111;
+    --color-dark-card: #111111;
+
+    --color-text-100: #ffffff;
+    --color-text-200: #f8fafc;
+    --color-text-300: #e2e8f0;
+    --color-text-400: #cbd5e1;
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #cbd5e1;
+    --color-text-muted: #94a3b8;
+    --color-text-dim: #64748b;
+
+    --color-border: rgba(255, 255, 255, 0.1);
+    --color-border-light: rgba(255, 255, 255, 0.05);
+    --color-border-hover: rgba(255, 255, 255, 0.2);
+    --color-dark-border: rgba(255, 255, 255, 0.1);
+    --color-dark-border-light: rgba(255, 255, 255, 0.05);
+
+    --color-accent: #3b82f6;
+    --color-accent-light: #60a5fa;
+    --color-cyan: #06b6d4;
+    --color-emerald: #10b981;
+  }
+}
+
+@layer utilities {
+  .glass {
+    backdrop-filter: blur(10px);
+  }
+
+  .glow {
+    box-shadow: 0 0 40px rgba(59, 130, 246, 0.15); /* Updated to match blue */
+  }
+
+  .marquee {
+    animation: marquee 25s linear infinite;
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0%);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
