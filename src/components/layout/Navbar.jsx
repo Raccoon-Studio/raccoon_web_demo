@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link, useLocation } from "react-router-dom";
 
 import { navLinks as links } from "../../data/navigation";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const location = useLocation();
 
   // Handle scroll state
   useEffect(() => {
@@ -80,7 +82,7 @@ export default function Navbar() {
         >
           <div className="flex items-center justify-between w-full">
             {/* Logo Section */}
-            <a href="#" className="flex items-center gap-3 group">
+            <Link to="/" className="flex items-center gap-3 group">
               <div className="relative flex items-center justify-center w-10 h-10 bg-zinc-900 rounded-full border border-white/5 transition-transform duration-500 group-hover:scale-105 group-hover:border-cyan-500/50">
                 <svg
                   width="24"
@@ -128,26 +130,29 @@ export default function Navbar() {
                   Studio
                 </span>
               </span>
-            </a>
+            </Link>
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center gap-1">
               {links.map((link) => (
-                <a
+                <Link
                   key={link.label}
-                  href={link.href}
-                  className="relative px-4 py-2 text-[11px] font-semibold tracking-[0.2em] uppercase transition-colors duration-300 rounded-full text-zinc-400 hover:text-zinc-50 hover:bg-white/5"
+                  to={link.href}
+                  className={`relative px-4 py-2 text-[11px] font-semibold tracking-[0.2em] uppercase transition-colors duration-300 rounded-full ${
+                    location.pathname === link.href
+                      ? "text-cyan-400 bg-white/5"
+                      : "text-zinc-400 hover:text-zinc-50 hover:bg-white/5"
+                  }`}
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
             </nav>
 
             {/* Desktop CTA & Mobile Toggle */}
             <div className="flex items-center gap-4">
-              {/* --- NEW PREMIUM BUTTON --- */}
-              <a
-                href="#contact"
+              <Link
+                to="/#contact"
                 className="relative hidden sm:inline-flex group"
               >
                 {/* Background Glow Effect */}
@@ -172,7 +177,7 @@ export default function Navbar() {
                     />
                   </svg>
                 </div>
-              </a>
+              </Link>
 
               {/* Hamburger Button */}
               <button
@@ -215,19 +220,20 @@ export default function Navbar() {
             >
               {links.map((link, i) => (
                 <div key={link.label} className="overflow-hidden">
-                  <motion.a
-                    variants={linkVars}
-                    href={link.href}
-                    onClick={() => setOpen(false)}
-                    className="flex items-end gap-4 group"
-                  >
-                    <span className="text-sm font-mono text-cyan-400/50 mb-1.5">
-                      0{i + 1}
-                    </span>
-                    <span className="text-5xl font-light tracking-tight text-zinc-300 group-hover:text-cyan-400 transition-colors duration-300">
-                      {link.label}
-                    </span>
-                  </motion.a>
+                  <motion.div variants={linkVars}>
+                    <Link
+                      to={link.href}
+                      onClick={() => setOpen(false)}
+                      className="flex items-end gap-4 group"
+                    >
+                      <span className="text-sm font-mono text-cyan-400/50 mb-1.5">
+                        0{i + 1}
+                      </span>
+                      <span className="text-5xl font-light tracking-tight text-zinc-300 group-hover:text-cyan-400 transition-colors duration-300">
+                        {link.label}
+                      </span>
+                    </Link>
+                  </motion.div>
                 </div>
               ))}
             </motion.nav>
