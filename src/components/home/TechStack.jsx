@@ -1,7 +1,8 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
-import { techRow1, techRow2 } from "../../data/techStack";
+import { techRow1 as localRow1, techRow2 as localRow2 } from "../../data/techStack";
+import { useFirestoreData } from "../../lib/useFirestoreData";
 
 function TechBadge({ tech }) {
   return (
@@ -37,6 +38,10 @@ function MarqueeRow({ items, reverse = false, speed = 35 }) {
 export default function TechStack() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
+
+  // CMS bridge: fetch from Firestore, fall back to local data
+  const { data: techRow1 } = useFirestoreData("tech_stack", localRow1);
+  const { data: techRow2 } = useFirestoreData("tech_stack", localRow2);
 
   return (
     <section

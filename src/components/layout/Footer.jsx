@@ -65,39 +65,68 @@ function Magnetic({ children, strength = 40 }) {
 }
 
 /* ─────────────────────────────────────────────
-   Animated letter — always animating with
-   proximity-based hover boost
+   Color wave — framer-motion driven, NOT CSS.
+   Inline styles = highest specificity = always visible.
    ───────────────────────────────────────────── */
-function WaveLetter({ char, activation, index, colorOffset = 0 }) {
-  const a = activation;
-  const delay = (index + colorOffset) * 0.12;
+const WAVE_COLORS = [
+  "#10b981", // emerald
+  "#0ea5e9", // sky
+  "#06b6d4", // cyan
+  "#14b8a6", // teal
+  "#10b981", // emerald
+  "#06b6d4", // cyan
+  "#10b981", // emerald
+];
 
+function AnimatedLetter({ char, index, activation = 0, colorOffset = 0 }) {
   if (char === " ") return <span className="inline-block w-[0.3em]" />;
 
+  const i = index + colorOffset;
+  const a = activation;
+  const delay = i * 0.25;
+
   return (
-    /* Outer: handles hover proximity displacement */
-    <span
-      className="inline-block select-none"
+    <motion.span
+      className="inline-block select-none cursor-default"
+      animate={{
+        y: [0, -6, 0, -3, 0],
+        color: WAVE_COLORS,
+      }}
+      transition={{
+        y: {
+          duration: 5,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay,
+        },
+        color: {
+          duration: 5,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay,
+        },
+      }}
       style={{
-        transform: `translateY(${-24 * a}px) scale(${1 + 0.2 * a})`,
-        filter: a > 0.1 ? `brightness(${1 + 0.6 * a})` : undefined,
+        display: "inline-block",
+        color: "#10b981",
+        transform:
+          a > 0 ? `translateY(${-20 * a}px) scale(${1 + 0.15 * a})` : undefined,
+        filter:
+          a > 0.1
+            ? `brightness(${1 + 0.6 * a}) drop-shadow(0 0 ${12 + 20 * a}px currentColor)`
+            : `drop-shadow(0 0 8px rgba(16,185,129,0.3))`,
         transition:
           "transform 0.3s cubic-bezier(0.22,1,0.36,1), filter 0.3s ease",
+        willChange: "transform, color, filter",
       }}
     >
-      {/* Inner: always-running CSS wave animation */}
-      <span
-        className="inline-block footer-letter-wave"
-        style={{ animationDelay: `${delay}s` }}
-      >
-        {char}
-      </span>
-    </span>
+      {char}
+    </motion.span>
   );
 }
 
 /* ─────────────────────────────────────────────
-   Brand line — tracks cursor for proximity fx
+   Brand line — proximity hover boost
    ───────────────────────────────────────────── */
 function BrandLine({ text, lineIndex = 0, colorOffset = 0 }) {
   const containerRef = useRef(null);
@@ -121,34 +150,38 @@ function BrandLine({ text, lineIndex = 0, colorOffset = 0 }) {
         setHovering(false);
         setMouseX(-1);
       }}
-      className="overflow-hidden cursor-default"
+      className="cursor-default"
     >
       <motion.div
-        initial={{ y: "110%" }}
-        whileInView={{ y: "0%" }}
-        viewport={{ once: true }}
+        initial={{ opacity: 0, y: 60 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
         transition={{
           duration: 0.9,
           delay: lineIndex * 0.2,
           ease: [0.22, 1, 0.36, 1],
         }}
-        className="font-display text-[15vw] md:text-[12vw] lg:text-[9.5vw] font-black uppercase leading-[0.88] tracking-tighter whitespace-nowrap flex justify-center"
+        className="flex justify-center"
+        style={{
+          fontSize: "clamp(3rem, 12vw, 10rem)",
+          fontWeight: 900,
+          letterSpacing: "-0.04em",
+          lineHeight: 0.9,
+          textTransform: "uppercase",
+        }}
       >
         {letters.map((char, i) => {
-          const pos =
-            letters.length > 1 ? i / (letters.length - 1) : 0.5;
+          const pos = letters.length > 1 ? i / (letters.length - 1) : 0.5;
           const dist =
             mouseX >= 0 ? Math.abs(pos - mouseX) * letters.length : 999;
-          const activation = hovering
-            ? Math.max(0, 1 - dist / RADIUS)
-            : 0;
+          const activation = hovering ? Math.max(0, 1 - dist / RADIUS) : 0;
 
           return (
-            <WaveLetter
+            <AnimatedLetter
               key={i}
               char={char}
-              activation={activation}
               index={i}
+              activation={activation}
               colorOffset={colorOffset}
             />
           );
@@ -184,7 +217,7 @@ export default function Footer() {
           minute: "2-digit",
           timeZoneName: "short",
           timeZone: "America/Los_Angeles",
-        })
+        }),
       );
     tick();
     const id = setInterval(tick, 60_000);
@@ -225,7 +258,7 @@ export default function Footer() {
 
   return (
     <footer ref={ref} className="relative bg-dark overflow-hidden">
-      {/* ambient orbs */}
+      {/* ── Ambient orbs ── */}
       <motion.div
         className="absolute top-0 left-1/4 w-[600px] h-[600px] rounded-full pointer-events-none"
         style={{
@@ -245,7 +278,7 @@ export default function Footer() {
         }}
       />
 
-      {/* ═══ CTA ═══ */}
+      {/* ═══ CTA Section ═══ */}
       <section className="border-t border-dark-border/20">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
           <motion.div
@@ -308,11 +341,12 @@ export default function Footer() {
                 transition={{ delay: 0.5, duration: 0.6 }}
                 className="font-body text-text-muted text-base md:text-lg mt-8 max-w-md leading-relaxed"
               >
-                We're always excited to collaborate on ambitious projects.
-                Let's build something remarkable together.
+                We're always excited to collaborate on ambitious projects. Let's
+                build something remarkable together.
               </motion.p>
             </div>
 
+            {/* CTA Circle */}
             <Magnetic strength={30}>
               <Link
                 to="/#contact"
@@ -409,11 +443,8 @@ export default function Footer() {
             viewport={{ once: true, margin: "-50px" }}
             className="grid grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-6"
           >
-            {/* Brand */}
-            <motion.div
-              variants={fadeUp}
-              className="col-span-2 lg:col-span-4"
-            >
+            {/* Brand — 4 cols */}
+            <motion.div variants={fadeUp} className="col-span-2 lg:col-span-4">
               <Link
                 to="/"
                 className="flex items-center gap-3 mb-6 group cursor-pointer"
@@ -429,9 +460,25 @@ export default function Footer() {
                     fill="none"
                     className="text-accent"
                   >
-                    <path d="M12 24L4 6L22 18" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-                    <path d="M52 24L60 6L42 18" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-                    <circle cx="32" cy="34" r="18" stroke="currentColor" strokeWidth="2.5" />
+                    <path
+                      d="M12 24L4 6L22 18"
+                      stroke="currentColor"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                    />
+                    <path
+                      d="M52 24L60 6L42 18"
+                      stroke="currentColor"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                    />
+                    <circle
+                      cx="32"
+                      cy="34"
+                      r="18"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                    />
                     <circle cx="24" cy="32" r="3" fill="currentColor" />
                     <circle cx="40" cy="32" r="3" fill="currentColor" />
                   </svg>
@@ -440,11 +487,13 @@ export default function Footer() {
                   Raccoon Studio
                 </span>
               </Link>
+
               <p className="font-body text-sm text-text-muted leading-[1.8] mb-8 max-w-[300px]">
                 Crafting digital experiences that push boundaries and deliver
                 measurable results. We bring visions to life through code,
                 design, and strategy.
               </p>
+
               <motion.div
                 className="inline-flex items-center gap-3 px-4 py-2.5 rounded-full border border-dark-border/20 bg-dark-surface/30 backdrop-blur-sm"
                 whileHover={{ borderColor: "rgba(16,185,129,0.3)" }}
@@ -463,7 +512,7 @@ export default function Footer() {
               </motion.div>
             </motion.div>
 
-            {/* Navigation */}
+            {/* Navigation — 2 cols */}
             <motion.div variants={fadeUp} className="col-span-1 lg:col-span-2">
               <h4 className="font-grotesk text-[11px] uppercase tracking-[0.25em] text-accent/70 mb-7 flex items-center gap-2">
                 <span className="w-4 h-px bg-accent/40" />
@@ -491,7 +540,7 @@ export default function Footer() {
               </ul>
             </motion.div>
 
-            {/* Connect */}
+            {/* Connect — 3 cols */}
             <motion.div variants={fadeUp} className="col-span-1 lg:col-span-3">
               <h4 className="font-grotesk text-[11px] uppercase tracking-[0.25em] text-accent/70 mb-7 flex items-center gap-2">
                 <span className="w-4 h-px bg-accent/40" />
@@ -534,7 +583,7 @@ export default function Footer() {
               </ul>
             </motion.div>
 
-            {/* Contact */}
+            {/* Contact — 3 cols */}
             <motion.div variants={fadeUp} className="col-span-2 lg:col-span-3">
               <h4 className="font-grotesk text-[11px] uppercase tracking-[0.25em] text-accent/70 mb-7 flex items-center gap-2">
                 <span className="w-4 h-px bg-accent/40" />
@@ -570,7 +619,7 @@ export default function Footer() {
         onMouseMove={handleBrandMouse}
         className="relative border-t border-dark-border/10 overflow-hidden"
       >
-        {/* spotlight */}
+        {/* Cursor spotlight */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
@@ -579,23 +628,26 @@ export default function Footer() {
           }}
         />
 
-        {/* soft glow behind text */}
+        {/* Center glow */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="w-[70%] h-[60%] bg-accent/[0.02] rounded-full blur-[100px]" />
+          <div
+            className="w-[70%] h-[50%] rounded-full blur-[120px]"
+            style={{ background: "rgba(16,185,129,0.03)" }}
+          />
         </div>
 
-        {/* corner marks */}
+        {/* Corner marks */}
         <div className="absolute top-6 left-6 w-5 h-5 border-l border-t border-accent/10" />
         <div className="absolute top-6 right-6 w-5 h-5 border-r border-t border-accent/10" />
         <div className="absolute bottom-6 left-6 w-5 h-5 border-l border-b border-accent/10" />
         <div className="absolute bottom-6 right-6 w-5 h-5 border-r border-b border-accent/10" />
 
         <div className="relative mx-auto max-w-[1400px] px-6 lg:px-10 py-20 md:py-28">
-          <div className="flex flex-col items-center gap-0">
+          <div className="flex flex-col items-center gap-2">
             <BrandLine text="RACCOON" lineIndex={0} colorOffset={0} />
             <BrandLine text="STUDIO" lineIndex={1} colorOffset={7} />
 
-            {/* tagline */}
+            {/* Tagline */}
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -696,28 +748,11 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* ═══ Keyframes ═══ */}
+      {/* ═══ Only gradient-shift needed now ═══ */}
       <style>{`
         @keyframes gradient-shift {
           0%, 100% { background-position: 0% 50%; }
           50% { background-position: 100% 50%; }
-        }
-
-        @keyframes footerLetterWave {
-          0%, 100% {
-            color: #10b981;
-            text-shadow:
-              0 0 20px rgba(16, 185, 129, 0.3),
-              0 0 40px rgba(16, 185, 129, 0.1);
-          }
-          50% {
-            color: rgba(255, 255, 255, 0.05);
-            text-shadow: none;
-          }
-        }
-
-        .footer-letter-wave {
-          animation: footerLetterWave 3s infinite ease-in-out;
         }
       `}</style>
     </footer>

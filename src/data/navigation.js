@@ -1,15 +1,15 @@
 export const navLinks = [
-  { label: "Work", href: "/#work" },
+  { label: "Work", href: "/work" },
   { label: "Services", href: "/#services" },
   { label: "Process", href: "/process" },
-  { label: "About", href: "/#about" },
+  // { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
 
 export const footerNav = [
-  { label: "Work", href: "/#work", num: "01" },
+  { label: "Work", href: "/work", num: "01" },
   { label: "Services", href: "/services", num: "02" },
-  { label: "About", href: "/#about", num: "03" },
+  // { label: "About", href: "/about", num: "03" },
   { label: "Contact", href: "/contact", num: "04" },
 ];
 

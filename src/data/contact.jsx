@@ -1,6 +1,9 @@
 // data/contact.jsx
 
-/* ───────── Contact Methods ───────── */
+/* ═══════════════════════════════════
+   CONTACT METHODS
+   ═══════════════════════════════════ */
+
 export const contactMethods = [
   {
     label: "Email",
@@ -21,6 +24,7 @@ export const contactMethods = [
       </svg>
     ),
     copyable: true,
+    isBooking: false,
   },
   {
     label: "Phone",
@@ -40,6 +44,7 @@ export const contactMethods = [
       </svg>
     ),
     copyable: true,
+    isBooking: false,
   },
   {
     label: "WhatsApp",
@@ -59,12 +64,13 @@ export const contactMethods = [
       </svg>
     ),
     copyable: true,
+    isBooking: false,
   },
   {
-    label: "Calendly",
-    value: "Book a 30-min call",
-    href: "https://calendly.com/raccoonstudio",
-    description: "Schedule directly on our calendar",
+    label: "Book a Call",
+    value: "Schedule a 30-min call",
+    href: "#book-call",
+    description: "Pick a time on Google Calendar",
     responseTime: "Instant booking",
     icon: (
       <svg
@@ -79,10 +85,14 @@ export const contactMethods = [
       </svg>
     ),
     copyable: false,
+    isBooking: true,
   },
 ];
 
-/* ───────── Services ───────── */
+/* ═══════════════════════════════════
+   SERVICE CATEGORIES
+   ═══════════════════════════════════ */
+
 export const serviceCategories = [
   {
     category: "Strategy",
@@ -124,7 +134,11 @@ export const serviceCategories = [
         icon: "◇",
         description: "Marketing & product sites",
       },
-      { label: "Mobile Design", icon: "□", description: "iOS & Android apps" },
+      {
+        label: "Mobile Design",
+        icon: "□",
+        description: "iOS & Android apps",
+      },
       {
         label: "Design Systems",
         icon: "⊞",
@@ -141,16 +155,36 @@ export const serviceCategories = [
     category: "Development",
     color: "emerald",
     services: [
-      { label: "Frontend Dev", icon: "⟨⟩", description: "React, Next.js, Vue" },
-      { label: "Backend Dev", icon: "⚙", description: "Node, Python, Go" },
-      { label: "Mobile Dev", icon: "📱", description: "React Native, Flutter" },
+      {
+        label: "Frontend Dev",
+        icon: "⟨⟩",
+        description: "React, Next.js, Vue",
+      },
+      {
+        label: "Backend Dev",
+        icon: "⚙",
+        description: "Node, Python, Go",
+      },
+      {
+        label: "Mobile Dev",
+        icon: "📱",
+        description: "React Native, Flutter",
+      },
       {
         label: "E-Commerce",
         icon: "🛒",
         description: "Shopify, custom stores",
       },
-      { label: "API Development", icon: "⇌", description: "REST & GraphQL" },
-      { label: "Cloud & DevOps", icon: "☁", description: "AWS, GCP, CI/CD" },
+      {
+        label: "API Development",
+        icon: "⇌",
+        description: "REST & GraphQL",
+      },
+      {
+        label: "Cloud & DevOps",
+        icon: "☁",
+        description: "AWS, GCP, CI/CD",
+      },
     ],
   },
   {
@@ -181,10 +215,21 @@ export const serviceCategories = [
   },
 ];
 
-/* ───────── Budget ───────── */
+/* ═══════════════════════════════════
+   BUDGET RANGES
+   ═══════════════════════════════════ */
+
 export const budgetRanges = [
-  { label: "Under $10k", value: "<10k", description: "Small projects & MVPs" },
-  { label: "$10k – $25k", value: "10k-25k", description: "Standard projects" },
+  {
+    label: "Under $10k",
+    value: "<10k",
+    description: "Small projects & MVPs",
+  },
+  {
+    label: "$10k – $25k",
+    value: "10k-25k",
+    description: "Standard projects",
+  },
   {
     label: "$25k – $50k",
     value: "25k-50k",
@@ -195,8 +240,16 @@ export const budgetRanges = [
     value: "50k-100k",
     description: "Enterprise solutions",
   },
-  { label: "$100k+", value: "100k+", description: "Large-scale platforms" },
+  {
+    label: "$100k+",
+    value: "100k+",
+    description: "Large-scale platforms",
+  },
 ];
+
+/* ═══════════════════════════════════
+   CURRENCIES
+   ═══════════════════════════════════ */
 
 export const currencies = [
   { code: "USD", symbol: "$", label: "US Dollar", flag: "🇺🇸" },
@@ -214,19 +267,52 @@ export const currencies = [
   { code: "KWD", symbol: "د.ك", label: "Kuwaiti Dinar", flag: "🇰🇼" },
   { code: "IQD", symbol: "د.ع", label: "Iraqi Dinar", flag: "🇮🇶" },
   { code: "BRL", symbol: "R$", label: "Brazilian Real", flag: "🇧🇷" },
+  { code: "KRW", symbol: "₩", label: "South Korean Won", flag: "🇰🇷" },
+  { code: "SEK", symbol: "kr", label: "Swedish Krona", flag: "🇸🇪" },
+  { code: "NOK", symbol: "kr", label: "Norwegian Krone", flag: "🇳🇴" },
+  { code: "DKK", symbol: "kr", label: "Danish Krone", flag: "🇩🇰" },
+  { code: "PLN", symbol: "zł", label: "Polish Zloty", flag: "🇵🇱" },
+  { code: "THB", symbol: "฿", label: "Thai Baht", flag: "🇹🇭" },
+  { code: "MYR", symbol: "RM", label: "Malaysian Ringgit", flag: "🇲🇾" },
+  { code: "PHP", symbol: "₱", label: "Philippine Peso", flag: "🇵🇭" },
+  { code: "IDR", symbol: "Rp", label: "Indonesian Rupiah", flag: "🇮🇩" },
+  { code: "ZAR", symbol: "R", label: "South African Rand", flag: "🇿🇦" },
+  { code: "MXN", symbol: "$", label: "Mexican Peso", flag: "🇲🇽" },
+  { code: "COP", symbol: "$", label: "Colombian Peso", flag: "🇨🇴" },
+  { code: "ARS", symbol: "$", label: "Argentine Peso", flag: "🇦🇷" },
+  { code: "CLP", symbol: "$", label: "Chilean Peso", flag: "🇨🇱" },
+  { code: "NGN", symbol: "₦", label: "Nigerian Naira", flag: "🇳🇬" },
+  { code: "EGP", symbol: "E£", label: "Egyptian Pound", flag: "🇪🇬" },
+  { code: "SAR", symbol: "﷼", label: "Saudi Riyal", flag: "🇸🇦" },
+  { code: "QAR", symbol: "﷼", label: "Qatari Riyal", flag: "🇶🇦" },
+  { code: "BHD", symbol: ".د.ب", label: "Bahraini Dinar", flag: "🇧🇭" },
+  { code: "OMR", symbol: "﷼", label: "Omani Rial", flag: "🇴🇲" },
+  { code: "JOD", symbol: "د.ا", label: "Jordanian Dinar", flag: "🇯🇴" },
+  { code: "TRY", symbol: "₺", label: "Turkish Lira", flag: "🇹🇷" },
+  { code: "HKD", symbol: "HK$", label: "Hong Kong Dollar", flag: "🇭🇰" },
+  { code: "TWD", symbol: "NT$", label: "Taiwan Dollar", flag: "🇹🇼" },
+  { code: "NZD", symbol: "NZ$", label: "New Zealand Dollar", flag: "🇳🇿" },
 ];
 
-/* ───────── Timeline Preferences ───────── */
+/* ═══════════════════════════════════
+   TIMELINE PREFERENCES
+   ═══════════════════════════════════ */
+
 export const timelines = [
   { label: "ASAP", value: "asap", icon: "⚡" },
   { label: "1–2 weeks", value: "1-2w", icon: "🏃" },
   { label: "1 month", value: "1m", icon: "📅" },
   { label: "2–3 months", value: "2-3m", icon: "🗓" },
+  { label: "3–6 months", value: "3-6m", icon: "📆" },
+  { label: "6+ months", value: "6m+", icon: "🏗" },
   { label: "Flexible", value: "flexible", icon: "🕐" },
   { label: "Not sure yet", value: "unsure", icon: "🤔" },
 ];
 
-/* ───────── How They Found Us ───────── */
+/* ═══════════════════════════════════
+   HOW THEY FOUND US
+   ═══════════════════════════════════ */
+
 export const referralSources = [
   { label: "Google Search", value: "google" },
   { label: "Social Media", value: "social" },
@@ -235,10 +321,15 @@ export const referralSources = [
   { label: "Blog / Article", value: "content" },
   { label: "Previous Client", value: "returning" },
   { label: "Conference / Event", value: "event" },
+  { label: "Podcast", value: "podcast" },
+  { label: "Newsletter", value: "newsletter" },
   { label: "Other", value: "other" },
 ];
 
-/* ───────── Office Locations ───────── */
+/* ═══════════════════════════════════
+   OFFICE LOCATIONS
+   ═══════════════════════════════════ */
+
 export const offices = [
   {
     city: "San Francisco",
@@ -254,6 +345,7 @@ export const offices = [
     hours: "Mon–Fri · 9AM–6PM",
     image:
       "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=400&h=250&fit=crop",
+    mapUrl: "https://maps.google.com/?q=548+Market+St+San+Francisco+CA+94104",
   },
   {
     city: "London",
@@ -269,6 +361,7 @@ export const offices = [
     hours: "Mon–Fri · 9AM–6PM",
     image:
       "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=400&h=250&fit=crop",
+    mapUrl: "https://maps.google.com/?q=71+Great+Russell+St+London+WC1B+3BN",
   },
   {
     city: "Singapore",
@@ -284,16 +377,20 @@ export const offices = [
     hours: "Mon–Fri · 9AM–6PM",
     image:
       "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=400&h=250&fit=crop",
+    mapUrl: "https://maps.google.com/?q=1+Raffles+Pl+Singapore+048616",
   },
 ];
 
-/* ───────── Process Steps ───────── */
+/* ═══════════════════════════════════
+   PROCESS STEPS
+   ═══════════════════════════════════ */
+
 export const processSteps = [
   {
     step: 1,
     title: "You Reach Out",
     description:
-      "Fill out the form or book a call. Share your vision, goals, and timeline.",
+      "Fill out the form or book a call. Share your vision, goals, and timeline. No commitment needed.",
     duration: "Today",
     icon: (
       <svg
@@ -311,7 +408,7 @@ export const processSteps = [
     step: 2,
     title: "Discovery Call",
     description:
-      "A 30-minute deep dive into your requirements, target audience, and success metrics.",
+      "A 30-minute deep dive into your requirements, target audience, and success metrics. We listen first.",
     duration: "Within 24h",
     icon: (
       <svg
@@ -329,7 +426,7 @@ export const processSteps = [
     step: 3,
     title: "Custom Proposal",
     description:
-      "Detailed scope, timeline, tech stack, and transparent pricing tailored to your project.",
+      "Detailed scope, timeline, tech stack recommendations, and transparent pricing tailored to your project.",
     duration: "2–3 days",
     icon: (
       <svg
@@ -347,7 +444,7 @@ export const processSteps = [
     step: 4,
     title: "Kick-Off Sprint",
     description:
-      "Align on milestones, set up tooling, and begin the first sprint cycle.",
+      "Align on milestones, set up communication channels, dev environments, and begin the first sprint.",
     duration: "Week 1",
     icon: (
       <svg
@@ -365,7 +462,7 @@ export const processSteps = [
     step: 5,
     title: "Build & Iterate",
     description:
-      "Weekly demos, continuous feedback loops, and transparent progress tracking.",
+      "Weekly demos every Friday, continuous feedback loops, and transparent progress tracking via shared dashboard.",
     duration: "3–12 weeks",
     icon: (
       <svg
@@ -383,7 +480,7 @@ export const processSteps = [
     step: 6,
     title: "Launch & Scale",
     description:
-      "Production deployment, monitoring setup, and ongoing support retainer.",
+      "Production deployment, monitoring setup, performance optimization, and ongoing support retainer options.",
     duration: "Launch day+",
     icon: (
       <svg
@@ -399,26 +496,33 @@ export const processSteps = [
   },
 ];
 
-/* ───────── FAQ ───────── */
+/* ═══════════════════════════════════
+   FAQ
+   ═══════════════════════════════════ */
+
 export const faqs = [
   {
     category: "Process",
     items: [
       {
         q: "What's the typical project timeline?",
-        a: "Most projects take 4–12 weeks depending on complexity. MVPs typically ship in 3–5 weeks, while full platforms take 8–16 weeks. We provide a detailed timeline in our proposal.",
+        a: "Most projects take 4–12 weeks depending on complexity. MVPs typically ship in 3–5 weeks, while full platforms take 8–16 weeks. We provide a detailed timeline breakdown in our proposal after the discovery call.",
       },
       {
         q: "How does your development process work?",
-        a: "We follow an agile methodology with weekly sprints. You get demos every Friday, a dedicated Slack channel, and real-time progress tracking via our client dashboard.",
+        a: "We follow an agile methodology with weekly sprints. You get live demos every Friday, a dedicated Slack channel for daily communication, and real-time progress tracking via our client dashboard. No surprises.",
       },
       {
         q: "Do you work with existing codebases?",
-        a: "Absolutely. We regularly take over existing projects, perform code audits, refactor architectures, and extend functionality. We'll assess your codebase health during the discovery phase.",
+        a: "Absolutely. We regularly take over existing projects, perform thorough code audits, refactor architectures, and extend functionality. We'll assess your codebase health during the discovery phase and provide honest recommendations.",
       },
       {
         q: "What happens after the project launches?",
-        a: "We offer flexible retainer packages for ongoing maintenance, feature development, and performance optimization. Most clients continue working with us post-launch.",
+        a: "We offer flexible retainer packages for ongoing maintenance, feature development, performance optimization, and 24/7 monitoring. Most clients continue working with us post-launch — our 93% retention rate speaks for itself.",
+      },
+      {
+        q: "How do you handle project changes mid-sprint?",
+        a: "Change is expected. We use a structured change request process — any scope changes are documented with updated timelines and costs before implementation. Small tweaks within sprint scope are handled flexibly.",
       },
     ],
   },
@@ -427,15 +531,23 @@ export const faqs = [
     items: [
       {
         q: "How do you handle pricing?",
-        a: "We offer both fixed-price and time & materials models. Fixed-price works best for well-defined scopes, while T&M is ideal for evolving requirements. We're transparent about costs from day one.",
+        a: "We offer both fixed-price and time & materials (T&M) models. Fixed-price works best for well-defined scopes with clear deliverables. T&M is ideal for evolving requirements or long-term engagements. We're fully transparent about costs from day one.",
       },
       {
         q: "Do you require a deposit?",
-        a: "Yes, we typically require a 30% deposit to begin work, with remaining payments tied to milestone deliveries. This ensures alignment and commitment from both sides.",
+        a: "Yes, we typically require a 30% deposit to begin work, with remaining payments tied to milestone deliveries (usually 40% at midpoint, 30% at completion). This ensures alignment and commitment from both sides.",
       },
       {
         q: "Can you work within my budget?",
-        a: "We're flexible. If your budget is limited, we'll help prioritize features for an MVP and plan a phased rollout. Every dollar should deliver measurable value.",
+        a: "We're flexible and creative with budgets. If your budget is limited, we'll help prioritize features for an MVP and plan a phased rollout. Every dollar should deliver measurable value. We'd rather do fewer things excellently than many things poorly.",
+      },
+      {
+        q: "What payment methods do you accept?",
+        a: "We accept bank transfers (ACH/SWIFT), credit cards via Stripe, and PayPal. For international clients, we support multiple currencies and can invoice in your preferred currency. Net-15 terms available for enterprise clients.",
+      },
+      {
+        q: "Are there any hidden costs?",
+        a: "Never. Our proposals include everything: design, development, QA, project management, deployment, and a warranty period. Third-party costs (hosting, domains, API subscriptions) are outlined separately and always disclosed upfront.",
       },
     ],
   },
@@ -444,15 +556,23 @@ export const faqs = [
     items: [
       {
         q: "What tech stack do you use?",
-        a: "Our core stack includes React/Next.js, TypeScript, Node.js, Python, PostgreSQL, and AWS. However, we choose the best tools for each project's specific requirements.",
+        a: "Our core stack includes React/Next.js, TypeScript, Node.js, Python, PostgreSQL, Redis, and AWS. However, we're stack-agnostic and choose the best tools for each project's specific requirements. We also work with Vue, Go, Django, MongoDB, GCP, and more.",
       },
       {
         q: "Do I own the code?",
-        a: "100%. You receive full ownership of all source code, designs, and assets upon final payment. No lock-in, no proprietary frameworks — clean, maintainable code you can take anywhere.",
+        a: "100%. You receive full ownership of all source code, designs, documentation, and assets upon final payment. No lock-in, no proprietary frameworks, no surprises — clean, well-documented, maintainable code you can take anywhere.",
       },
       {
         q: "How do you handle security?",
-        a: "Security is built into our process from day one. We follow OWASP guidelines, implement proper authentication/authorization, conduct security audits, and offer SOC 2 compliance guidance.",
+        a: "Security is built into our process from day one. We follow OWASP guidelines, implement proper authentication/authorization, encrypt data at rest and in transit, conduct regular security audits, and offer SOC 2 compliance guidance for enterprise clients.",
+      },
+      {
+        q: "Do you write tests?",
+        a: "Yes. Every project includes unit tests, integration tests, and end-to-end tests as appropriate. We target 80%+ code coverage for critical business logic. CI/CD pipelines run tests automatically on every commit.",
+      },
+      {
+        q: "How do you ensure code quality?",
+        a: "Every PR goes through code review by a senior engineer. We use automated linting (ESLint, Prettier), TypeScript strict mode, and SonarQube for code quality metrics. Our CI pipeline blocks merges that don't meet quality thresholds.",
       },
     ],
   },
@@ -461,61 +581,104 @@ export const faqs = [
     items: [
       {
         q: "What timezone do you operate in?",
-        a: "Our team spans US, EU, and APAC timezones. We ensure at least 4 hours of overlap with your team for real-time collaboration, regardless of your location.",
+        a: "Our team spans US Pacific, European, and Asia-Pacific timezones. We ensure at least 4 hours of real-time overlap with your team for synchronous collaboration, regardless of your location. Async communication fills any gaps.",
       },
       {
         q: "How do you handle communication?",
-        a: "Slack for daily communication, weekly video demos, and a shared project dashboard. You'll have direct access to your project lead — no account managers in between.",
+        a: "Slack for daily communication, weekly 30-min video standups, Friday demos, and a shared project dashboard for real-time tracking. You'll have direct access to your project lead and the engineering team — no account managers filtering information.",
       },
       {
         q: "Can I meet the team before starting?",
-        a: "Absolutely. During the discovery phase, you'll meet your dedicated project lead, lead designer, and lead developer. Chemistry matters to us as much as capability.",
+        a: "Absolutely. During the discovery phase, you'll meet your dedicated project lead, lead designer, and lead developer. Chemistry matters to us as much as capability. If the fit isn't right, we'll tell you honestly.",
+      },
+      {
+        q: "What if I'm not happy with the work?",
+        a: "We have a structured revision process with unlimited design revisions during the design phase. For development, our weekly demos catch issues early. We also include a 30-day warranty period post-launch for bug fixes at no additional cost.",
+      },
+      {
+        q: "Can you sign an NDA?",
+        a: "Yes, absolutely. We're happy to sign mutual NDAs before any detailed discussions. Just check the NDA box in the contact form and we'll send one within 24 hours. We take confidentiality seriously.",
       },
     ],
   },
 ];
 
-/* ───────── Team Members ───────── */
+/* ═══════════════════════════════════
+   TEAM MEMBERS
+   ═══════════════════════════════════ */
+
 export const teamMembers = [
   {
     name: "Alex Rivera",
     role: "Founder & Creative Director",
     avatar: "https://i.pravatar.cc/120?img=68",
-    bio: "15+ years leading digital projects for Fortune 500s and high-growth startups.",
-    linkedin: "#",
-    calendly: "#",
+    bio: "15+ years leading digital projects for Fortune 500s and high-growth startups. Previously at Pentagram and IDEO.",
+    linkedin: "https://linkedin.com/in/alexrivera",
+    twitter: "https://twitter.com/alexrivera",
+    bookable: true,
+    specialties: ["Brand Strategy", "Creative Direction", "Product Vision"],
   },
   {
     name: "Sarah Chen",
     role: "Head of Engineering",
     avatar: "https://i.pravatar.cc/120?img=47",
-    bio: "Ex-Google, specializing in scalable architectures and cloud infrastructure.",
-    linkedin: "#",
-    calendly: "#",
+    bio: "Ex-Google Staff Engineer specializing in scalable architectures, cloud infrastructure, and developer experience.",
+    linkedin: "https://linkedin.com/in/sarahchen",
+    twitter: "https://twitter.com/sarahchen",
+    bookable: true,
+    specialties: ["System Architecture", "Cloud", "Performance"],
   },
   {
     name: "Marcus Webb",
     role: "Design Lead",
     avatar: "https://i.pravatar.cc/120?img=12",
-    bio: "Award-winning designer with a focus on conversion-driven UI/UX.",
-    linkedin: "#",
-    calendly: "#",
+    bio: "Award-winning designer (3x Awwwards, 2x CSS Design Awards) with a focus on conversion-driven UI/UX and design systems.",
+    linkedin: "https://linkedin.com/in/marcuswebb",
+    twitter: "https://twitter.com/marcuswebb",
+    bookable: true,
+    specialties: ["UI/UX", "Design Systems", "Motion"],
   },
   {
     name: "Priya Nair",
     role: "Project Director",
     avatar: "https://i.pravatar.cc/120?img=23",
-    bio: "PMP certified. Ensures every project ships on time and on budget.",
-    linkedin: "#",
-    calendly: "#",
+    bio: "PMP & SAFe certified. 50+ projects delivered on time and on budget. Your single point of accountability.",
+    linkedin: "https://linkedin.com/in/priyanair",
+    twitter: "https://twitter.com/priyanair",
+    bookable: true,
+    specialties: ["Project Management", "Agile", "Client Relations"],
+  },
+  {
+    name: "David Kim",
+    role: "Senior Full-Stack Engineer",
+    avatar: "https://i.pravatar.cc/120?img=33",
+    bio: "10+ years building production applications. TypeScript enthusiast. Open-source contributor to Next.js and Prisma.",
+    linkedin: "https://linkedin.com/in/davidkim",
+    twitter: "https://twitter.com/davidkim",
+    bookable: false,
+    specialties: ["React/Next.js", "Node.js", "PostgreSQL"],
+  },
+  {
+    name: "Elena Voss",
+    role: "Senior Designer",
+    avatar: "https://i.pravatar.cc/120?img=44",
+    bio: "Ex-Spotify design team. Specializes in mobile-first design, accessibility, and user research methodologies.",
+    linkedin: "https://linkedin.com/in/elenavoss",
+    twitter: "https://twitter.com/elenavoss",
+    bookable: false,
+    specialties: ["Mobile Design", "Accessibility", "User Research"],
   },
 ];
 
-/* ───────── Social Links ───────── */
+/* ═══════════════════════════════════
+   SOCIAL LINKS
+   ═══════════════════════════════════ */
+
 export const socialLinks = [
   {
     name: "Twitter / X",
     href: "https://twitter.com/raccoonstudio",
+    handle: "@raccoonstudio",
     followers: "12.4K",
     icon: (
       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -526,6 +689,7 @@ export const socialLinks = [
   {
     name: "LinkedIn",
     href: "https://linkedin.com/company/raccoonstudio",
+    handle: "Raccoon Studio",
     followers: "8.2K",
     icon: (
       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -536,6 +700,7 @@ export const socialLinks = [
   {
     name: "Dribbble",
     href: "https://dribbble.com/raccoonstudio",
+    handle: "raccoonstudio",
     followers: "5.8K",
     icon: (
       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -546,6 +711,7 @@ export const socialLinks = [
   {
     name: "GitHub",
     href: "https://github.com/raccoonstudio",
+    handle: "raccoonstudio",
     followers: "3.1K",
     icon: (
       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -556,6 +722,7 @@ export const socialLinks = [
   {
     name: "Instagram",
     href: "https://instagram.com/raccoonstudio",
+    handle: "@raccoonstudio",
     followers: "15.6K",
     icon: (
       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -566,6 +733,7 @@ export const socialLinks = [
   {
     name: "YouTube",
     href: "https://youtube.com/@raccoonstudio",
+    handle: "@raccoonstudio",
     followers: "2.3K",
     icon: (
       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -573,9 +741,34 @@ export const socialLinks = [
       </svg>
     ),
   },
+  {
+    name: "Behance",
+    href: "https://behance.net/raccoonstudio",
+    handle: "raccoonstudio",
+    followers: "4.7K",
+    icon: (
+      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M6.938 4.503c.702 0 1.34.06 1.92.188.577.13 1.07.33 1.485.61.41.28.733.65.96 1.12.225.47.34 1.05.34 1.73 0 .74-.17 1.36-.507 1.86-.338.5-.837.9-1.502 1.22.906.26 1.576.72 2.022 1.37.448.66.665 1.45.665 2.36 0 .75-.13 1.39-.41 1.93-.28.55-.67 1-1.16 1.35-.48.348-1.05.6-1.67.767-.63.165-1.27.25-1.95.25H0V4.51h6.938v-.007zM6.545 10.88c.563 0 1.03-.14 1.397-.422.37-.28.554-.7.554-1.254 0-.31-.06-.56-.18-.76a1.397 1.397 0 00-.49-.49c-.2-.12-.44-.2-.72-.24a4.4 4.4 0 00-.84-.08H3.01v3.24h3.534v.005zm.2 5.59c.32 0 .628-.03.92-.1.293-.07.55-.18.762-.34.21-.16.38-.37.5-.64.12-.27.18-.6.18-.99 0-.78-.24-1.33-.72-1.66-.48-.33-1.1-.5-1.88-.5H3.01v4.24h3.734v-.01zM21.568 18.4c-.58.58-1.46.87-2.64.87-.84 0-1.55-.18-2.12-.53-.57-.36-.94-.82-1.1-1.39h7.88c.06-.37.09-.75.09-1.13 0-1.01-.15-1.9-.46-2.66-.31-.77-.72-1.4-1.25-1.9-.53-.5-1.14-.87-1.85-1.12-.71-.24-1.47-.37-2.27-.37-.87 0-1.65.14-2.36.43s-1.31.69-1.82 1.22-.9 1.16-1.18 1.9c-.28.74-.42 1.56-.42 2.46 0 .93.14 1.76.42 2.49.28.73.67 1.35 1.18 1.86s1.12.89 1.82 1.16c.7.27 1.49.41 2.36.41 1.23 0 2.28-.29 3.13-.87.86-.58 1.45-1.48 1.78-2.68h-2.75c-.1.37-.35.69-.76.95zm-4.83-6.22c.72 0 1.32.2 1.76.58.45.39.7.93.77 1.63h-5.23c.1-.66.38-1.2.84-1.61.47-.41 1.08-.6 1.86-.6zM15.27 4.35h5.46v1.65h-5.46V4.35z" />
+      </svg>
+    ),
+  },
+  {
+    name: "Medium",
+    href: "https://medium.com/@raccoonstudio",
+    handle: "@raccoonstudio",
+    followers: "1.9K",
+    icon: (
+      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z" />
+      </svg>
+    ),
+  },
 ];
 
-/* ───────── Testimonials ───────── */
+/* ═══════════════════════════════════
+   TESTIMONIALS
+   ═══════════════════════════════════ */
+
 export const testimonials = [
   {
     quote:
@@ -587,6 +780,7 @@ export const testimonials = [
     rating: 5,
     metric: "+340%",
     metricLabel: "Revenue Growth",
+    project: "Fintech Platform",
   },
   {
     quote:
@@ -598,10 +792,11 @@ export const testimonials = [
     rating: 5,
     metric: "95+",
     metricLabel: "Lighthouse Score",
+    project: "AI Dashboard",
   },
   {
     quote:
-      "They turned our 47-page requirements doc into a working MVP in 19 days. What other agencies quoted 3 months for.",
+      "They turned our 47-page requirements doc into a working MVP in 19 days. What other agencies quoted 3 months for, they delivered in under 3 weeks.",
     author: "Marcus Webb",
     role: "CTO",
     company: "Prism Labs",
@@ -609,10 +804,11 @@ export const testimonials = [
     rating: 5,
     metric: "19",
     metricLabel: "Days to Launch",
+    project: "SaaS Platform",
   },
   {
     quote:
-      "Working with Raccoon felt like having an in-house team. The weekly demos, the proactive communication — it set a new standard for us.",
+      "Working with Raccoon felt like having an in-house team. The weekly demos, the proactive communication, the attention to detail — it set a new standard for us.",
     author: "Priya Nair",
     role: "Product Director",
     company: "CloudVault",
@@ -620,10 +816,38 @@ export const testimonials = [
     rating: 5,
     metric: "500K",
     metricLabel: "Users Scaled To",
+    project: "Cloud Storage",
+  },
+  {
+    quote:
+      "We've worked with 6 agencies in 4 years. Raccoon is the only one we've renewed with. The ROI is undeniable — our conversion rate tripled within 2 months.",
+    author: "James Holloway",
+    role: "CMO",
+    company: "Vertex Marketing",
+    avatar: "https://i.pravatar.cc/64?img=53",
+    rating: 5,
+    metric: "3x",
+    metricLabel: "Conversion Rate",
+    project: "Marketing Site",
+  },
+  {
+    quote:
+      "They didn't just execute our vision — they improved it. Every meeting brought new insights. The final product exceeded our wildest expectations.",
+    author: "Aisha Patel",
+    role: "Founder",
+    company: "Horizon Health",
+    avatar: "https://i.pravatar.cc/64?img=45",
+    rating: 5,
+    metric: "4.9",
+    metricLabel: "App Store Rating",
+    project: "Health App",
   },
 ];
 
-/* ───────── Trust Signals ───────── */
+/* ═══════════════════════════════════
+   TRUST SIGNALS & STATS
+   ═══════════════════════════════════ */
+
 export const trustStats = [
   { value: "50+", label: "Projects Delivered", icon: "🚀" },
   { value: "93%", label: "Client Retention", icon: "🔄" },
@@ -632,6 +856,10 @@ export const trustStats = [
   { value: "<24h", label: "Response Time", icon: "💬" },
   { value: "12+", label: "Countries Served", icon: "🌍" },
 ];
+
+/* ═══════════════════════════════════
+   TRUSTED BRANDS / CLIENT LOGOS
+   ═══════════════════════════════════ */
 
 export const trustedBrands = [
   "Helios",
@@ -648,9 +876,280 @@ export const trustedBrands = [
   "Atlas",
 ];
 
+/* ═══════════════════════════════════
+   CERTIFICATIONS & BADGES
+   ═══════════════════════════════════ */
+
 export const certifications = [
-  { name: "SOC 2 Compliant", icon: "🛡" },
-  { name: "GDPR Ready", icon: "🇪🇺" },
-  { name: "AWS Partner", icon: "☁" },
-  { name: "ISO 27001", icon: "✓" },
+  { name: "SOC 2 Compliant", icon: "🛡", description: "Type II certified" },
+  {
+    name: "GDPR Ready",
+    icon: "🇪🇺",
+    description: "Full compliance framework",
+  },
+  {
+    name: "AWS Partner",
+    icon: "☁",
+    description: "Advanced consulting partner",
+  },
+  {
+    name: "ISO 27001",
+    icon: "✓",
+    description: "Information security certified",
+  },
+  {
+    name: "WCAG 2.1 AA",
+    icon: "♿",
+    description: "Accessibility compliant",
+  },
+  {
+    name: "PCI DSS",
+    icon: "💳",
+    description: "Payment card industry standards",
+  },
 ];
+
+/* ═══════════════════════════════════
+   BOOKING / MEETING TYPES
+   (Used by BookingModal)
+   ═══════════════════════════════════ */
+
+export const meetingTypes = [
+  {
+    id: "discovery",
+    label: "Discovery Call",
+    duration: 30,
+    icon: "💬",
+    description: "Discuss your project vision, goals & timeline",
+    agenda: [
+      "Project overview & goals",
+      "Timeline & budget alignment",
+      "Technical requirements",
+      "Team & process overview",
+      "Q&A",
+    ],
+  },
+  {
+    id: "technical",
+    label: "Technical Deep-Dive",
+    duration: 45,
+    icon: "⚙️",
+    description: "Architecture, stack & technical requirements",
+    agenda: [
+      "Current technical landscape",
+      "Architecture recommendations",
+      "Stack evaluation",
+      "Integration requirements",
+      "Security considerations",
+      "Scalability planning",
+    ],
+  },
+  {
+    id: "review",
+    label: "Portfolio Review",
+    duration: 20,
+    icon: "📋",
+    description: "Walk through relevant case studies & capabilities",
+    agenda: [
+      "Relevant case studies",
+      "Process walkthrough",
+      "Team capabilities",
+      "Quick Q&A",
+    ],
+  },
+  {
+    id: "strategy",
+    label: "Strategy Session",
+    duration: 60,
+    icon: "🎯",
+    description: "In-depth product & growth strategy workshop",
+    agenda: [
+      "Market analysis",
+      "Competitive landscape",
+      "Product roadmapping",
+      "Go-to-market strategy",
+      "Growth framework",
+      "Resource planning",
+    ],
+  },
+];
+
+/* ═══════════════════════════════════
+   BOOKING / TIMEZONES
+   (Used by BookingModal)
+   ═══════════════════════════════════ */
+
+export const bookingTimezones = [
+  { label: "Pacific (PT)", value: "America/Los_Angeles", offset: "UTC-8" },
+  { label: "Mountain (MT)", value: "America/Denver", offset: "UTC-7" },
+  { label: "Central (CT)", value: "America/Chicago", offset: "UTC-6" },
+  { label: "Eastern (ET)", value: "America/New_York", offset: "UTC-5" },
+  { label: "São Paulo (BRT)", value: "America/Sao_Paulo", offset: "UTC-3" },
+  { label: "London (GMT)", value: "Europe/London", offset: "UTC+0" },
+  { label: "Paris (CET)", value: "Europe/Paris", offset: "UTC+1" },
+  { label: "Berlin (CET)", value: "Europe/Berlin", offset: "UTC+1" },
+  { label: "Istanbul (TRT)", value: "Europe/Istanbul", offset: "UTC+3" },
+  { label: "Dubai (GST)", value: "Asia/Dubai", offset: "UTC+4" },
+  { label: "Mumbai (IST)", value: "Asia/Kolkata", offset: "UTC+5:30" },
+  { label: "Bangkok (ICT)", value: "Asia/Bangkok", offset: "UTC+7" },
+  { label: "Singapore (SGT)", value: "Asia/Singapore", offset: "UTC+8" },
+  { label: "Hong Kong (HKT)", value: "Asia/Hong_Kong", offset: "UTC+8" },
+  { label: "Tokyo (JST)", value: "Asia/Tokyo", offset: "UTC+9" },
+  { label: "Seoul (KST)", value: "Asia/Seoul", offset: "UTC+9" },
+  { label: "Sydney (AEST)", value: "Australia/Sydney", offset: "UTC+11" },
+  { label: "Auckland (NZST)", value: "Pacific/Auckland", offset: "UTC+12" },
+];
+
+/* ═══════════════════════════════════
+   AVAILABILITY CONFIG
+   (Used by sidebar availability card)
+   ═══════════════════════════════════ */
+
+export const availability = {
+  status: "available", // "available" | "limited" | "unavailable"
+  quarter: "Q3 2025",
+  slotsRemaining: 3,
+  responseTime: "24 hours",
+  businessHours: "Mon – Fri · 9AM – 6PM PST",
+  nextAvailableDate: "2025-07-07",
+  holidays: [
+    { date: "2025-07-04", name: "Independence Day" },
+    { date: "2025-09-01", name: "Labor Day" },
+    { date: "2025-11-27", name: "Thanksgiving" },
+    { date: "2025-12-25", name: "Christmas Day" },
+    { date: "2026-01-01", name: "New Year's Day" },
+  ],
+};
+
+/* ═══════════════════════════════════
+   FORM CONFIGURATION
+   (Field metadata & validation rules)
+   ═══════════════════════════════════ */
+
+export const formConfig = {
+  steps: [
+    {
+      id: 1,
+      title: "About You",
+      description: "Tell us who you are",
+      requiredFields: ["name", "email"],
+    },
+    {
+      id: 2,
+      title: "Services Needed",
+      description: "What can we help with?",
+      requiredFields: ["services"],
+    },
+    {
+      id: 3,
+      title: "Budget Range",
+      description: "Help us scope your project",
+      requiredFields: [],
+    },
+    {
+      id: 4,
+      title: "Timeline",
+      description: "When do you need it?",
+      requiredFields: [],
+    },
+    {
+      id: 5,
+      title: "Project Details",
+      description: "Tell us about your vision",
+      requiredFields: ["message"],
+    },
+    {
+      id: 6,
+      title: "How Did You Find Us?",
+      description: "Helps us serve you better",
+      requiredFields: [],
+    },
+  ],
+  validation: {
+    name: {
+      required: true,
+      minLength: 2,
+      maxLength: 100,
+      message: "Name is required",
+    },
+    email: {
+      required: true,
+      pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+      message: "Valid email is required",
+    },
+    phone: {
+      required: false,
+      pattern: /^[+]?[\d\s()-]{7,20}$/,
+      message: "Invalid phone number",
+    },
+    website: {
+      required: false,
+      pattern: /^https?:\/\/.+/,
+      message: "URL must start with http:// or https://",
+    },
+    message: {
+      required: true,
+      minLength: 20,
+      maxLength: 2000,
+      message: "Please describe your project (min 20 characters)",
+    },
+  },
+  fileUpload: {
+    maxFiles: 5,
+    maxSizeMB: 10,
+    acceptedTypes: [
+      ".pdf",
+      ".doc",
+      ".docx",
+      ".png",
+      ".jpg",
+      ".jpeg",
+      ".gif",
+      ".webp",
+      ".svg",
+      ".figma",
+      ".sketch",
+      ".xd",
+      ".psd",
+      ".ai",
+      ".zip",
+      ".rar",
+    ],
+    acceptedMimeTypes: [
+      "application/pdf",
+      "application/msword",
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "image/png",
+      "image/jpeg",
+      "image/gif",
+      "image/webp",
+      "image/svg+xml",
+      "application/zip",
+      "application/x-rar-compressed",
+    ],
+  },
+};
+
+/* ═══════════════════════════════════
+   PRIVACY & LEGAL LINKS
+   ═══════════════════════════════════ */
+
+export const legalLinks = [
+  { label: "Privacy Policy", href: "/privacy" },
+  { label: "Terms of Service", href: "/terms" },
+  { label: "Cookie Policy", href: "/cookies" },
+  { label: "NDA Template", href: "/nda" },
+];
+
+/* ═══════════════════════════════════
+   EMERGENCY / URGENT CONTACT
+   ═══════════════════════════════════ */
+
+export const emergencyContact = {
+  label: "Urgent Support",
+  description: "For existing clients with production issues",
+  phone: "+1 (415) 555-0199",
+  email: "urgent@raccoonstudio.com",
+  sla: "< 1 hour response",
+  available: "24/7 for retainer clients",
+};

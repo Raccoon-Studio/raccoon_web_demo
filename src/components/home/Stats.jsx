@@ -1,7 +1,8 @@
 import { useRef, useEffect, useState } from "react";
 import { motion, useInView, animate } from "framer-motion";
 
-import { globalStats as stats } from "../../data/stats";
+import { globalStats as localStats } from "../../data/stats";
+import { useFirestoreData } from "../../lib/useFirestoreData";
 
 function Counter({ value, suffix }) {
   const ref = useRef(null);
@@ -35,6 +36,9 @@ function Counter({ value, suffix }) {
 export default function Stats() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  // CMS bridge: fetch from Firestore, fall back to local data
+  const { data: stats } = useFirestoreData("stats", localStats);
 
   return (
     <section ref={ref} className="relative py-24 bg-dark overflow-hidden">

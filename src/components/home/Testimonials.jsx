@@ -1,12 +1,16 @@
 import { useState, useRef } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 
-import { testimonials } from "../../data/testimonials";
+import { testimonials as localTestimonials } from "../../data/testimonials";
+import { useFirestoreData } from "../../lib/useFirestoreData";
 
 export default function Testimonials() {
   const [page, setPage] = useState(0);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  // CMS bridge: fetch from Firestore, fall back to local data
+  const { data: testimonials } = useFirestoreData("testimonials", localTestimonials);
 
   const itemsPerPage = 4;
   const totalPages = Math.ceil(testimonials.length / itemsPerPage);

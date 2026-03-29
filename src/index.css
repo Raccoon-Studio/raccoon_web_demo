@@ -67,8 +67,8 @@
     --color-text-400: #cbd5e1;
     --color-text-primary: #ffffff;
     --color-text-secondary: #cbd5e1;
-    --color-text-muted: #94a3b8;
-    --color-text-dim: #64748b;
+    --color-text-muted: #e2e8f0;
+    --color-text-dim: #cbd5e1;
 
     --color-border: rgba(255, 255, 255, 0.1);
     --color-border-light: rgba(255, 255, 255, 0.05);
@@ -80,6 +80,32 @@
     --color-accent-light: #60a5fa;
     --color-cyan: #06b6d4;
     --color-emerald: #10b981;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--color-bg);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, var(--color-emerald), var(--color-cyan));
+    border: 3px solid var(--color-bg);
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-emerald);
+  }
+
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-emerald) var(--color-bg);
   }
 }
 
@@ -104,4 +130,70 @@
       transform: translateX(-50%);
     }
   }
+}
+@keyframes gradient-shift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes footerLetterWave {
+  0% {
+    color: rgba(16, 185, 129, 0.35);
+    text-shadow:
+      0 0 20px rgba(16, 185, 129, 0.15),
+      0 0 40px rgba(16, 185, 129, 0.05);
+    transform: translateY(0px);
+  }
+  16% {
+    color: rgba(6, 182, 212, 0.45);
+    text-shadow:
+      0 0 25px rgba(6, 182, 212, 0.2),
+      0 0 50px rgba(6, 182, 212, 0.08);
+    transform: translateY(-4px);
+  }
+  33% {
+    color: rgba(16, 185, 129, 0.5);
+    text-shadow:
+      0 0 30px rgba(16, 185, 129, 0.25),
+      0 0 60px rgba(16, 185, 129, 0.1);
+    transform: translateY(-2px);
+  }
+  50% {
+    color: rgba(6, 182, 212, 0.4);
+    text-shadow:
+      0 0 22px rgba(6, 182, 212, 0.18),
+      0 0 45px rgba(6, 182, 212, 0.07);
+    transform: translateY(0px);
+  }
+  66% {
+    color: rgba(16, 185, 129, 0.45);
+    text-shadow:
+      0 0 28px rgba(16, 185, 129, 0.22),
+      0 0 55px rgba(16, 185, 129, 0.09);
+    transform: translateY(-3px);
+  }
+  83% {
+    color: rgba(6, 182, 212, 0.35);
+    text-shadow:
+      0 0 18px rgba(6, 182, 212, 0.14),
+      0 0 38px rgba(6, 182, 212, 0.06);
+    transform: translateY(-1px);
+  }
+  100% {
+    color: rgba(16, 185, 129, 0.35);
+    text-shadow:
+      0 0 20px rgba(16, 185, 129, 0.15),
+      0 0 40px rgba(16, 185, 129, 0.05);
+    transform: translateY(0px);
+  }
+}
+
+.footer-wave-letter {
+  animation: footerLetterWave 4s ease-in-out infinite;
+  will-change: color, text-shadow, transform;
 }
