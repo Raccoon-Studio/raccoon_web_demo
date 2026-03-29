@@ -9,6 +9,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 // React Compiler (babel-plugin-react-compiler) is disabled.
 // It caused a null hook dispatcher crash in BrowserRouter with Vite 8 / React 19.
 export default defineConfig({
+  base: '/raccoon_web_demo/',
   plugins: [
     react(),
     tailwindcss(),
