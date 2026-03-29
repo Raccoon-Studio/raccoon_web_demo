@@ -1,4 +1,5 @@
 export const navLinks = [
+  { label: "Home", href: "/" },
   { label: "Work", href: "/work" },
   { label: "Services", href: "/#services" },
   { label: "Process", href: "/process" },
@@ -7,6 +8,7 @@ export const navLinks = [
 ];
 
 export const footerNav = [
+  { label: "Home", href: "/", num: "00" },
   { label: "Work", href: "/work", num: "01" },
   { label: "Services", href: "/services", num: "02" },
   // { label: "About", href: "/about", num: "03" },
